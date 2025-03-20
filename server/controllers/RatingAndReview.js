@@ -1,6 +1,7 @@
 const RatingAndReview = require("../models/RatingAndRaview");
 const Course = require("../models/Course");
 const { mongo, default: mongoose } = require("mongoose");
+const { BsCheckLg } = require("react-icons/bs");
 
 //createRating
 exports.createRating = async (req, res) => {
@@ -8,8 +9,14 @@ exports.createRating = async (req, res) => {
 
         //get user id
         const userId = req.user.id;
+        console.log("User ID derived :", userId);
+        console.log("User ID from Token:", req.user);
+
         //fetchdata from req body
         const {rating, review, courseId} = req.body;
+        console.log("Rating:", rating);
+        console.log("Review:", review);
+        console.log("Course Id:", courseId);
         //check if user is enrolled or not
         const courseDetails = await Course.findOne(
                                     {_id:courseId,
