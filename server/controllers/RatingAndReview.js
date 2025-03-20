@@ -1,7 +1,7 @@
 const RatingAndReview = require("../models/RatingAndRaview");
 const Course = require("../models/Course");
 const { mongo, default: mongoose } = require("mongoose");
-const { BsCheckLg } = require("react-icons/bs");
+
 
 //createRating
 exports.createRating = async (req, res) => {
