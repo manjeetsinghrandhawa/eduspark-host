@@ -21,15 +21,13 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
-const whitelist = process.env.CORS_ORIGIN
-  ? (process.env.CORS_ORIGIN)
-  : ["*"];
+
 
 app.use(
   cors({
-    origin: whitelist,
+    origin: "*",
     credentials: true,
-    maxAge: 14400,
+    
   })
 );
 
