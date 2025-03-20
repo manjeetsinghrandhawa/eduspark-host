@@ -21,12 +21,17 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
+const whitelist = process.env.CORS_ORIGIN
+  ? JSON.parse(process.env.CORS_ORIGIN)
+  : ["*"];
+
 app.use(
-	cors({
-		origin:["http://localhost:3000", "https://eduspark-git-main-manjeet-singhs-projects-803e5245.vercel.app/"],
-		credentials:true,
-	})
-)
+  cors({
+    origin: whitelist,
+    credentials: true,
+    maxAge: 14400,
+  })
+);
 
 app.use(
 	fileUpload({
